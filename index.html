@@ -5,9 +5,35 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="dist/app.css">
-        <link rel="stylesheet" href="dist/index.js">
     </head>
     <body>
-        <h1>hello, world</h1>
+        <div class="container">
+            <h1 class="page-header">sticker wall</h1>
+            <div class="sticker-wrapper"></div>
+        </div>
+
+        <script type="template" id="sticker-list">
+            <ul class="sticker-list">
+                <% _.each(list, function(item) { %>
+                <li class="sticker-item" data-index=<%- item.index %>>
+                    <span class="sticker__remove" data-content=<%- item.content %>>&#x2717;</span>
+                    <textarea class="sticker__content" rows="10"><%- item.content %> </textarea>
+                </li>
+                <% }); %>
+                <li id="sticker-add" class="sticker__add">
+                    &#x2719;
+                </li>
+            </ul>
+        </script>
+
+        <script type="template" id="sticker-item">
+            <li class="sticker-item" data-index=<%- index %>>
+                <span class="sticker__remove" data-content=<%- content %>>&#x2717;</span>
+                <textarea class="sticker__content" rows="10"> <%- content %> </textarea>
+            </li>
+        </script>
+
+        <script src="dist/index.js"></script>
+
     </body>
 </html>
